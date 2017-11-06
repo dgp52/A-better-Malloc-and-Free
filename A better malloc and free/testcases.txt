@@ -1,0 +1,36 @@
+//Deepkumar Patel, dgp52, 145005704
+//Viraj Patel, vjp60, 168001058
+
+Workload E:
+Purpose: 1) Malloc 1 byte 3000 times on same memory location.
+2) Return null on rquesting more than it can handle and allocate different size.
+
+Outcome: 1) Calling malloc 3000 times works on the same memory location because  free is 
+called right after it allocates the memory. Which means that whenever we call
+malloc(1), the memory is already free. It also shows that free is working as 
+intended. The reason why we selected this workload is to check whether the free
+is working properly, eventhough we call it 3000 times, as long as free is called on 
+that memory location.
+
+Outcome: 2) The purpose of calling malloc(6) is to check whether or not our implementation of
+malloc can allocate any given size. The purpose of allocating it 1500 times is to check if
+it allocates or takes up the entire memory space.
+
+In order to show that the memory is full we allocated 1 byte and it fails. To further make
+sure that 1 byte is not allocated we try to free that 1 byte. It throws a null pointer error 
+because that 1 byte was never allocated.
+
+Finally, all pointers are freed.
+
+Workload F:
+Purpose: 1) Redundant freeing() of the same pointer
+2) Allocating memory in huge chunks by calling malloc(1) 1500 times, twice.
+
+Outcome: 1) We allocated 1 byte using malloc. Then we freed that memory location. Now when we call
+free one more time on the same pointer then it doesn't work because the location is already
+freed. The reason why we picked this workload is to check whether the memory location is 
+actually freed.
+
+2) Allocated the memory in two huge chunks to check whether it can allocate the memory right 	   after the first chunk, since we know that the other half of the memory is free.
+
+Finally, all pointers are freed. 
